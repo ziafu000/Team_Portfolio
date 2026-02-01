@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 import { fadeInUp, staggerContainer, blurIn, scaleIn, hoverButton } from '@/lib/motion';
+import Magnetic from '@/components/ui/Magnetic';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,20 +122,24 @@ export default function CTA() {
                         variants={fadeInUp}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        <motion.div whileHover="hover" whileTap="tap" variants={hoverButton}>
-                            <Link href="mailto:hello@team.agency" className="btn-primary text-lg px-8 py-4 group shadow-lg shadow-[var(--accent-primary)]/20">
-                                Start a Project
-                                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </Link>
-                        </motion.div>
+                        <Magnetic>
+                            <motion.div whileHover="hover" whileTap="tap" variants={hoverButton}>
+                                <Link href="mailto:hello@team.agency" className="btn-primary text-lg px-8 py-4 group shadow-lg shadow-[var(--accent-primary)]/20">
+                                    Start a Project
+                                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </Link>
+                            </motion.div>
+                        </Magnetic>
 
-                        <motion.div whileHover="hover" whileTap="tap" variants={hoverButton}>
-                            <Link href="mailto:hello@team.agency" className="btn-secondary text-lg px-8 py-4">
-                                hello@team.agency
-                            </Link>
-                        </motion.div>
+                        <Magnetic>
+                            <motion.div whileHover="hover" whileTap="tap" variants={hoverButton}>
+                                <Link href="mailto:hello@team.agency" className="btn-secondary text-lg px-8 py-4">
+                                    hello@team.agency
+                                </Link>
+                            </motion.div>
+                        </Magnetic>
                     </motion.div>
                     <br></br>
                     {/* Trust indicators - Enhanced with repeating */}

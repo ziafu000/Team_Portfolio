@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInDown, staggerContainer, hoverButton } from '@/lib/motion';
 import Link from 'next/link';
+import Magnetic from '@/components/ui/Magnetic';
 
 const navLinks = [
     { href: '#services', label: 'Services' },
@@ -52,32 +53,37 @@ export default function Navbar() {
                     className="hidden md:flex items-center gap-8"
                 >
                     {navLinks.map((link) => (
-                        <motion.div key={link.href} variants={fadeInDown}>
+                        <Magnetic key={link.href}>
+                            <motion.div variants={fadeInDown}>
+                                <Link
+                                    href={link.href}
+                                    className="font-medium text-[var(--text-secondary)] hover:text-[var(--accent-light)] transition-colors relative group py-1 block"
+                                >
+                                    {link.label}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--accent-primary)] group-hover:w-full transition-all duration-300" />
+                                </Link>
+                            </motion.div>
+                        </Magnetic>
+                    ))}
+                    <Magnetic>
+                        <motion.div variants={fadeInDown}>
                             <Link
-                                href={link.href}
-                                className="font-medium text-[var(--text-secondary)] hover:text-[var(--accent-light)] transition-colors relative group py-1"
+                                href="#contact"
+                                className="btn-primary text-sm py-2 px-5 inline-block"
                             >
-                                {link.label}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--accent-primary)] group-hover:w-full transition-all duration-300" />
+                                <motion.span
+                                    whileHover="hover"
+                                    whileTap="tap"
+                                    variants={hoverButton}
+                                    className="inline-block"
+                                >
+                                    Let&apos;s Talk
+                                </motion.span>
                             </Link>
                         </motion.div>
-                    ))}
-                    <motion.div variants={fadeInDown}>
-                        <Link
-                            href="#contact"
-                            className="btn-primary text-sm py-2 px-5 inline-block"
-                        >
-                            <motion.span
-                                whileHover="hover"
-                                whileTap="tap"
-                                variants={hoverButton}
-                                className="inline-block"
-                            >
-                                Let&apos;s Talk
-                            </motion.span>
-                        </Link>
-                    </motion.div>
+                    </Magnetic>
                 </motion.div>
+
 
                 {/* Mobile Menu Button */}
                 <button

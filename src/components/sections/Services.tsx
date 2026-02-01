@@ -136,31 +136,47 @@ export default function Services() {
                     {services.map((service, index) => (
                         <div
                             key={service.id}
-                            className="service-card relative group"
+                            className="service-card relative group/card"
+                            onMouseMove={(e) => {
+                                const { currentTarget, clientX, clientY } = e;
+                                const { left, top } = currentTarget.getBoundingClientRect();
+                                const x = clientX - left;
+                                const y = clientY - top;
+                                currentTarget.style.setProperty("--mouse-x", `${x}px`);
+                                currentTarget.style.setProperty("--mouse-y", `${y}px`);
+                            }}
                         >
                             <motion.div
                                 whileHover="hover"
                                 initial="initial"
                                 variants={hoverCard}
-                                className="glass-card p-6 md:p-8 h-full flex flex-col cursor-pointer bg-[var(--bg-elevated)]/50 border-[var(--glass-border)] group-hover:border-[var(--accent-primary)]/50 transition-all duration-500"
+                                className="glass-card p-6 md:p-8 h-full flex flex-col cursor-pointer bg-[var(--bg-elevated)]/50 border-[var(--glass-border)] group-hover/card:border-[var(--accent-primary)]/50 transition-all duration-500 overflow-hidden relative"
                             >
+                                {/* Spotlight Effect */}
+                                <div
+                                    className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover/card:opacity-100 mix-blend-screen"
+                                    style={{
+                                        background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(249, 115, 22, 0.15), transparent 40%)`
+                                    }}
+                                />
+
                                 <motion.div variants={hoverGlow} className="absolute inset-0 rounded-2xl pointer-events-none" />
 
-                                <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 flex-shrink-0 shadow-lg shadow-[var(--accent-primary)]/20">
+                                <div className="flex items-center gap-4 mb-6 relative z-10">
+                                    <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center text-2xl group-hover/card:scale-110 group-hover/card:rotate-6 transition-transform duration-500 flex-shrink-0 shadow-lg shadow-[var(--accent-primary)]/20">
                                         {service.icon}
                                     </div>
-                                    <h3 className="font-display font-semibold text-2xl group-hover:text-[var(--accent-light)] transition-colors duration-300">
+                                    <h3 className="font-display font-semibold text-2xl group-hover/card:text-[var(--accent-light)] transition-colors duration-300">
                                         {service.title}
                                     </h3>
                                 </div>
-                                <p className="text-[var(--text-secondary)] text-md leading-relaxed">
+                                <p className="text-[var(--text-secondary)] text-md leading-relaxed relative z-10">
                                     {service.description}
                                 </p>
 
                                 {/* Decorative line */}
-                                <div className="mt-auto pt-6">
-                                    <div className="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] transition-all duration-500" />
+                                <div className="mt-auto pt-6 relative z-10">
+                                    <div className="h-0.5 w-0 group-hover/card:w-full bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] transition-all duration-500" />
                                 </div>
                             </motion.div>
                         </div>
