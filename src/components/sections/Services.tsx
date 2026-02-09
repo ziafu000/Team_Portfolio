@@ -33,7 +33,7 @@ export default function Services() {
                         trigger: sectionRef.current,
                         start: 'top bottom',
                         end: 'bottom top',
-                        scrub: 1.5,
+                        scrub: 1.5, // Increased for smoother feel
                     },
                 });
             }
@@ -59,26 +59,23 @@ export default function Services() {
                 const cards = cardsRef.current.querySelectorAll('.service-card');
 
                 gsap.set(cards, {
-                    y: 80,
+                    y: 60, // Reduced from 80
                     opacity: 0,
-                    scale: 0.9,
-                    rotateX: 20,
-                    transformPerspective: 1000,
+                    scale: 0.95, // Reduced rotation complexity
                 });
 
                 gsap.to(cards, {
                     y: 0,
                     opacity: 1,
                     scale: 1,
-                    rotateX: 0,
-                    duration: 1,
-                    stagger: 0.15,
-                    ease: 'power4.out',
+                    duration: 0.8, // Reduced from 1
+                    stagger: 0.1, // Reduced from 0.15
+                    ease: 'power3.out', // Simpler easing
                     scrollTrigger: {
                         trigger: cardsRef.current,
                         start: 'top 80%',
                         end: 'top 20%',
-                        toggleActions: 'play reverse play reverse', // Repeat on scroll
+                        toggleActions: 'play reverse play reverse',
                     },
                 });
             }
@@ -133,37 +130,21 @@ export default function Services() {
                     ref={cardsRef}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-3"
                 >
-                    {services.map((service, index) => (
+                    {services.map((service) => (
                         <div
                             key={service.id}
                             className="service-card relative group/card"
-                            onMouseMove={(e) => {
-                                const { currentTarget, clientX, clientY } = e;
-                                const { left, top } = currentTarget.getBoundingClientRect();
-                                const x = clientX - left;
-                                const y = clientY - top;
-                                currentTarget.style.setProperty("--mouse-x", `${x}px`);
-                                currentTarget.style.setProperty("--mouse-y", `${y}px`);
-                            }}
                         >
                             <motion.div
                                 whileHover="hover"
                                 initial="initial"
                                 variants={hoverCard}
-                                className="glass-card p-6 md:p-8 h-full flex flex-col cursor-pointer bg-[var(--bg-elevated)]/50 border-[var(--glass-border)] group-hover/card:border-[var(--accent-primary)]/50 transition-all duration-500 overflow-hidden relative"
+                                className="glass-card p-6 md:p-8 h-full flex flex-col cursor-pointer bg-[var(--bg-elevated)]/50 border-[var(--glass-border)] group-hover/card:border-[var(--accent-primary)]/50 transition-colors duration-300 overflow-hidden relative"
                             >
-                                {/* Spotlight Effect */}
-                                <div
-                                    className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover/card:opacity-100 mix-blend-screen"
-                                    style={{
-                                        background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(249, 115, 22, 0.15), transparent 40%)`
-                                    }}
-                                />
-
                                 <motion.div variants={hoverGlow} className="absolute inset-0 rounded-2xl pointer-events-none" />
 
                                 <div className="flex items-center gap-4 mb-6 relative z-10">
-                                    <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center text-2xl group-hover/card:scale-110 group-hover/card:rotate-6 transition-transform duration-500 flex-shrink-0 shadow-lg shadow-[var(--accent-primary)]/20">
+                                    <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center text-2xl group-hover/card:scale-110 group-hover/card:rotate-6 transition-transform duration-300 flex-shrink-0 shadow-lg shadow-[var(--accent-primary)]/20">
                                         {service.icon}
                                     </div>
                                     <h3 className="font-display font-semibold text-2xl group-hover/card:text-[var(--accent-light)] transition-colors duration-300">
@@ -176,7 +157,7 @@ export default function Services() {
 
                                 {/* Decorative line */}
                                 <div className="mt-auto pt-6 relative z-10">
-                                    <div className="h-0.5 w-0 group-hover/card:w-full bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] transition-all duration-500" />
+                                    <div className="h-0.5 w-0 group-hover/card:w-full bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] transition-all duration-300" />
                                 </div>
                             </motion.div>
                         </div>

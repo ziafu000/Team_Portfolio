@@ -34,7 +34,7 @@ export default function Process() {
                         trigger: sectionRef.current,
                         start: 'top bottom',
                         end: 'bottom top',
-                        scrub: 1.5,
+                        scrub: 1.5, // Increased for smoother feel
                     },
                 });
             }
@@ -62,13 +62,13 @@ export default function Process() {
                 gsap.to(lineRef.current, {
                     scaleX: 1,
                     opacity: 0.3,
-                    duration: 1.5,
+                    duration: 1.2, // Reduced from 1.5
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: cardsRef.current,
                         start: 'top 70%',
                         end: 'top 30%',
-                        toggleActions: 'play reverse play reverse', // Repeat
+                        toggleActions: 'play reverse play reverse',
                     },
                 });
             }
@@ -78,26 +78,23 @@ export default function Process() {
                 const cards = cardsRef.current.querySelectorAll('.process-card');
 
                 gsap.set(cards, {
-                    y: 80,
+                    y: 60, // Reduced from 80
                     opacity: 0,
-                    scale: 0.88,
-                    rotateX: 25,
-                    transformPerspective: 1000,
+                    scale: 0.95, // Simplified - removed rotateX
                 });
 
                 gsap.to(cards, {
                     y: 0,
                     opacity: 1,
                     scale: 1,
-                    rotateX: 0,
-                    duration: 1,
-                    stagger: 0.18,
-                    ease: 'power4.out',
+                    duration: 0.8, // Reduced from 1
+                    stagger: 0.12, // Reduced from 0.18
+                    ease: 'power3.out', // Simpler easing
                     scrollTrigger: {
                         trigger: cardsRef.current,
                         start: 'top 80%',
                         end: 'top 20%',
-                        toggleActions: 'play reverse play reverse', // Repeat
+                        toggleActions: 'play reverse play reverse',
                     },
                 });
             }
@@ -173,15 +170,15 @@ export default function Process() {
                                 whileHover="hover"
                                 initial="initial"
                                 variants={hoverCard}
-                                className="glass-card p-6 md:p-8 h-full flex flex-col cursor-pointer relative z-10 bg-[var(--bg-elevated)]/50 border-[var(--glass-border)] group-hover:border-[var(--accent-primary)]/50 transition-all duration-500"
+                                className="glass-card p-6 md:p-8 h-full flex flex-col cursor-pointer relative z-10 bg-[var(--bg-elevated)]/50 border-[var(--glass-border)] group-hover:border-[var(--accent-primary)]/50 transition-colors duration-300"
                             >
                                 <motion.div variants={hoverGlow} className="absolute inset-0 rounded-2xl pointer-events-none" />
 
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center text-2xl font-display font-bold group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 flex-shrink-0 shadow-lg shadow-[var(--accent-primary)]/20 relative">
+                                    <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center text-2xl font-display font-bold group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 flex-shrink-0 shadow-lg shadow-[var(--accent-primary)]/20 relative">
                                         {step.id}
                                         {/* Pulse ring on hover */}
-                                        <div className="absolute inset-0 rounded-2xl border-2 border-[var(--accent-primary)] opacity-0 group-hover:opacity-50 group-hover:scale-125 transition-all duration-500" />
+                                        <div className="absolute inset-0 rounded-2xl border-2 border-[var(--accent-primary)] opacity-0 group-hover:opacity-50 group-hover:scale-125 transition-all duration-300" />
                                     </div>
                                     <h3 className="font-display font-semibold text-2xl group-hover:text-[var(--accent-light)] transition-colors duration-300">
                                         {step.title}

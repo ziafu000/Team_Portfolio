@@ -22,19 +22,26 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         // Check for reduced motion preference
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        if (prefersReducedMotion) {
-            // Don't initialize Lenis if user prefers reduced motion
+        // Check for mobile/touch device
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+        // Check for low-end device
+        const isLowEnd = navigator.hardwareConcurrency ? navigator.hardwareConcurrency <= 4 : false;
+
+        // Don't initialize Lenis on mobile, touch devices, low-end, or reduced motion
+        if (prefersReducedMotion || isMobile || isTouchDevice || isLowEnd) {
             return;
         }
 
         const lenisInstance = new Lenis({
-            duration: 1.2,
+            duration: 1.0, // Reduced from 1.2 for snappier feel
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: 'vertical',
             gestureOrientation: 'vertical',
             smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 2,
+            wheelMultiplier: 0.8, // Reduced from 1 for smoother feel
+            touchMultiplier: 1.5, // Reduced from 2
         });
 
         setLenis(lenisInstance);

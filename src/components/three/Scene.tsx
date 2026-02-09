@@ -1,25 +1,51 @@
 'use client';
 
 import { Suspense, useRef, useState, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useThree } from '@react-three/fiber';
 import { Preload, PresentationControls } from '@react-three/drei';
 import { getOptimalDpr, getPerformanceTier } from '@/lib/device';
 import Model from './Model';
 import Lighting from './Lighting';
-import CameraRig from './CameraRig';
 import LoadingScreen from './LoadingScreen';
 
 interface SceneProps {
     modelPath?: string;
 }
 
+// Invalidate on hover for demand rendering
+function HoverInvalidator() {
+    const { invalidate } = useThree();
+
+    useEffect(() => {
+        const handleMouseMove = () => invalidate();
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [invalidate]);
+
+    return null;
+}
+
 export default function Scene({ modelPath = '/models/team-icon.glb' }: SceneProps) {
     const [isClient, setIsClient] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setIsClient(true);
+    }, []);
+
+    // Visibility detection - pause rendering when off-screen
+    useEffect(() => {
+        if (!containerRef.current || typeof IntersectionObserver === 'undefined') return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => setIsVisible(entry.isIntersecting),
+            { threshold: 0, rootMargin: '100px' }
+        );
+
+        observer.observe(containerRef.current);
+        return () => observer.disconnect();
     }, []);
 
     const tier = isClient ? getPerformanceTier() : 'desktop';
@@ -45,28 +71,33 @@ export default function Scene({ modelPath = '/models/team-icon.glb' }: SceneProp
             <Canvas
                 className="w-full h-full"
                 dpr={dpr}
+                frameloop={isVisible ? 'demand' : 'never'}
                 camera={{ position: [0, 0, 5], fov: 45 }}
                 gl={{
                     antialias: tier === 'desktop',
                     powerPreference: 'high-performance',
-                    alpha: true
+                    alpha: true,
+                    stencil: false,
+                    depth: true,
                 }}
                 style={{ background: 'transparent' }}
             >
                 <Suspense fallback={null}>
+                    <HoverInvalidator />
+
+                    {/* Only hover/drag to rotate - model stays still otherwise */}
                     <PresentationControls
                         global
                         snap={true}
-                        rotation={[0, 0.3, 0]}
-                        polar={[-Math.PI / 3, Math.PI / 3]}
-                        azimuth={[-Infinity, Infinity]}
+                        rotation={[0, 0, 0]}
+                        polar={[-Math.PI / 4, Math.PI / 4]}
+                        azimuth={[-Math.PI / 4, Math.PI / 4]}
+                        config={{ mass: 1, tension: 170, friction: 26 }}
                     >
-                        <CameraRig>
-                            <Model
-                                path={modelPath}
-                                onLoaded={() => setIsLoaded(true)}
-                            />
-                        </CameraRig>
+                        <Model
+                            path={modelPath}
+                            onLoaded={() => setIsLoaded(true)}
+                        />
                     </PresentationControls>
 
                     <Lighting tier={tier} />

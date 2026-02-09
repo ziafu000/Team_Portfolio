@@ -46,7 +46,7 @@ export default function Portfolio() {
                         trigger: sectionRef.current,
                         start: 'top bottom',
                         end: 'bottom top',
-                        scrub: 1.5,
+                        scrub: 1.5, // Increased for smoother feel
                     },
                 });
             }
@@ -72,26 +72,23 @@ export default function Portfolio() {
                 const cards = cardsRef.current.querySelectorAll('.portfolio-card');
 
                 gsap.set(cards, {
-                    y: 100,
+                    y: 80, // Reduced from 100
                     opacity: 0,
-                    scale: 0.85,
-                    rotateY: 15,
-                    transformPerspective: 1200,
+                    scale: 0.9, // Simplified - removed rotateY
                 });
 
                 gsap.to(cards, {
                     y: 0,
                     opacity: 1,
                     scale: 1,
-                    rotateY: 0,
-                    duration: 1.1,
-                    stagger: 0.12,
-                    ease: 'power4.out',
+                    duration: 0.9, // Reduced from 1.1
+                    stagger: 0.1, // Reduced from 0.12
+                    ease: 'power3.out', // Simpler easing
                     scrollTrigger: {
                         trigger: cardsRef.current,
                         start: 'top 80%',
                         end: 'top 20%',
-                        toggleActions: 'play reverse play reverse', // Repeat on scroll
+                        toggleActions: 'play reverse play reverse',
                     },
                 });
             }
@@ -156,25 +153,25 @@ export default function Portfolio() {
                                 whileHover="hover"
                                 initial="initial"
                                 variants={hoverCard}
-                                className="glass-card relative overflow-hidden rounded-2xl h-full flex flex-col bg-[var(--bg-elevated)]/50 border-[var(--glass-border)] group-hover:border-[var(--accent-primary)]/50 transition-all duration-500"
+                                className="glass-card relative overflow-hidden rounded-2xl h-full flex flex-col bg-[var(--bg-elevated)]/50 border-[var(--glass-border)] group-hover:border-[var(--accent-primary)]/50 transition-colors duration-300"
                             >
                                 <motion.div variants={hoverGlow} className="absolute inset-0 rounded-2xl pointer-events-none" />
 
                                 {/* Image Placeholder with enhanced effects */}
                                 <div className="relative bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg-primary)] aspect-[4/3] overflow-hidden">
                                     {/* Animated gradient overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/20 via-[var(--accent-secondary)]/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/20 via-[var(--accent-secondary)]/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
 
                                     {/* Category Icon with glow */}
                                     <div className="absolute inset-0 flex items-center justify-center">
-                                        <span className="text-7xl opacity-20 group-hover:opacity-40 group-hover:scale-125 transition-all duration-700">
+                                        <span className="text-7xl opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500">
                                             {item.category === 'Web Development' ? '🌐' :
                                                 item.category === '3D & Motion' ? '🎮' : '✨'}
                                         </span>
                                     </div>
 
                                     {/* View overlay */}
-                                    <div className="absolute inset-0 bg-[var(--accent-primary)]/0 group-hover:bg-[var(--accent-primary)]/10 transition-colors duration-500 flex items-center justify-center">
+                                    <div className="absolute inset-0 bg-[var(--accent-primary)]/0 group-hover:bg-[var(--accent-primary)]/10 transition-colors duration-300 flex items-center justify-center">
                                         <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white font-medium text-sm uppercase tracking-wider">
                                             View Project
                                         </span>
