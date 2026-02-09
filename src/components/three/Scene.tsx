@@ -92,7 +92,6 @@ export default function Scene({ modelPath = '/models/team-icon.glb' }: SceneProp
                         rotation={[0, 0, 0]}
                         polar={[-Math.PI / 4, Math.PI / 4]}
                         azimuth={[-Math.PI / 4, Math.PI / 4]}
-                        config={{ mass: 1, tension: 170, friction: 26 }}
                     >
                         <Model
                             path={modelPath}

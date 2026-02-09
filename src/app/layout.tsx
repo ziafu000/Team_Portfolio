@@ -16,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://team-agency.vercel.app'),
   title: "TEAM Agency | Creative Digital & 3D Studio",
   description: "We craft stunning digital experiences through cutting-edge web development, 3D visualization, creative ads, and innovative design solutions.",
   keywords: ["3D Studio", "Web Development", "Creative Agency", "Digital Design", "Motion Graphics"],
