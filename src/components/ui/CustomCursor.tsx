@@ -92,7 +92,7 @@ export default function CustomCursor() {
                     willChange: 'transform',
                 }}
                 animate={{
-                    scale: isHovered ? 2.5 : 1,
+                    scale: isHovered ? 1.5 : 1,
                 }}
                 transition={{ duration: 0.15 }}
             />
