@@ -38,7 +38,7 @@ export default function Preloader() {
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
                         >
-                            TEAM
+                            Ryan 4B
                         </motion.h1>
                         <motion.div
                             className="absolute bottom-0 left-0 w-full h-1 bg-orange-500"
