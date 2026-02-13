@@ -7,10 +7,10 @@ import Link from 'next/link';
 import Magnetic from '@/components/ui/Magnetic';
 
 const navLinks = [
-    { href: '#services', label: 'Services' },
-    { href: '#work', label: 'Work' },
-    { href: '#process', label: 'Process' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#services', label: 'Dịch vụ' },
+    { href: '#work', label: 'Dự án' },
+    { href: '#process', label: 'Quy trình' },
+    { href: '#contact', label: 'Liên hệ' },
 ];
 
 export default function Navbar() {
@@ -31,8 +31,10 @@ export default function Navbar() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass py-3' : 'py-6'
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+                ? 'glass py-3'
+                : 'py-6'
+                } bg-[var(--bg-primary)] md:bg-transparent`}
         >
             <div className="container flex items-center justify-between">
                 {/* Logo */}
@@ -77,7 +79,7 @@ export default function Navbar() {
                                     variants={hoverButton}
                                     className="inline-block"
                                 >
-                                    Let&apos;s Talk
+                                    Trò chuyện ngay
                                 </motion.span>
                             </Link>
                         </motion.div>
@@ -88,13 +90,33 @@ export default function Navbar() {
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="md:hidden w-10 h-10 flex items-center justify-center"
+                    className="md:hidden w-10 h-10 flex items-center justify-center relative z-50"
                     aria-label="Toggle menu"
                 >
-                    <div className="flex flex-col gap-1.5">
-                        <span className={`w-6 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                        <span className={`w-6 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-                        <span className={`w-6 h-0.5 bg-white transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                    <div className="flex flex-col gap-1.5 w-6 items-end">
+                        <motion.span
+                            animate={{
+                                rotate: mobileMenuOpen ? 45 : 0,
+                                y: mobileMenuOpen ? 8 : 0,
+                                width: mobileMenuOpen ? '100%' : '100%'
+                            }}
+                            className="h-0.5 bg-white block rounded-full"
+                        />
+                        <motion.span
+                            animate={{
+                                opacity: mobileMenuOpen ? 0 : 1,
+                                width: mobileMenuOpen ? '0%' : '70%'
+                            }}
+                            className="h-0.5 bg-white block rounded-full"
+                        />
+                        <motion.span
+                            animate={{
+                                rotate: mobileMenuOpen ? -45 : 0,
+                                y: mobileMenuOpen ? -8 : 0,
+                                width: mobileMenuOpen ? '100%' : '100%'
+                            }}
+                            className="h-0.5 bg-white block rounded-full"
+                        />
                     </div>
                 </button>
             </div>
@@ -102,27 +124,49 @@ export default function Navbar() {
             {/* Mobile Menu */}
             <motion.div
                 initial={false}
-                animate={{ height: mobileMenuOpen ? 'auto' : 0 }}
-                className="md:hidden overflow-hidden glass"
+                animate={{
+                    height: mobileMenuOpen ? 'auto' : 0,
+                    opacity: mobileMenuOpen ? 1 : 0
+                }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="md:hidden overflow-hidden bg-[var(--bg-primary)] border-t border-[var(--glass-border)]"
             >
-                <div className="container py-6 flex flex-col gap-4">
-                    {navLinks.map((link) => (
-                        <Link
+                <div className="container py-8 flex flex-col gap-6 text-center">
+                    {navLinks.map((link, index) => (
+                        <motion.div
                             key={link.href}
-                            href={link.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="font-medium text-lg py-2 hover:text-[var(--accent-light)] transition-colors"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{
+                                opacity: mobileMenuOpen ? 1 : 0,
+                                y: mobileMenuOpen ? 0 : 10
+                            }}
+                            transition={{ delay: index * 0.05 }}
                         >
-                            {link.label}
-                        </Link>
+                            <Link
+                                href={link.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="font-display font-medium text-xl py-2 hover:text-[var(--accent-light)] transition-colors inline-block"
+                            >
+                                {link.label}
+                            </Link>
+                        </motion.div>
                     ))}
-                    <Link
-                        href="#contact"
-                        className="btn-primary mt-2"
-                        onClick={() => setMobileMenuOpen(false)}
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{
+                            opacity: mobileMenuOpen ? 1 : 0,
+                            y: mobileMenuOpen ? 0 : 10
+                        }}
+                        transition={{ delay: navLinks.length * 0.05 }}
                     >
-                        Let&apos;s Talk
-                    </Link>
+                        <Link
+                            href="#contact"
+                            className="btn-primary w-full max-w-xs mx-auto"
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            Trò chuyện ngay
+                        </Link>
+                    </motion.div>
                 </div>
             </motion.div>
         </motion.nav>

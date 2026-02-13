@@ -77,7 +77,7 @@ export default function Testimonials() {
                         trigger: cardsRef.current,
                         start: 'top 80%',
                         end: 'top 20%',
-                        toggleActions: 'play reverse play reverse', // Repeat
+                        toggleActions: 'play none none none',
                     },
                 });
             }
@@ -101,7 +101,7 @@ export default function Testimonials() {
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     className="text-center mb-16 flex flex-col items-center"
                 >
                     <motion.span
@@ -110,7 +110,7 @@ export default function Testimonials() {
                     >
                         <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
                         <span className="text-[var(--accent-primary)] font-display font-medium uppercase tracking-widest text-sm">
-                            Testimonials
+                            Khách Hàng Nói Gì
                         </span>
                     </motion.span>
 
@@ -119,11 +119,11 @@ export default function Testimonials() {
                         className="font-display font-bold tracking-tight"
                         style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: 1.1 }}
                     >
-                        What Clients <span className="gradient-text">Say</span>
+                        Phản Hồi <span className="gradient-text">Khách Hàng</span>
                     </motion.h2>
 
                     <motion.p variants={fadeInUp} className="section-subtitle mx-auto mt-6">
-                        Don&apos;t just take our word for it. Hear from the clients we&apos;ve helped succeed.
+                        Được tin tưởng bởi các doanh nghiệp tiên phong trên toàn cầu.
                     </motion.p>
                 </motion.div>
 

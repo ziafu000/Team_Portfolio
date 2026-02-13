@@ -28,19 +28,12 @@ export default function Model({ path, onLoaded }: ModelProps) {
             // Scale to fit
             const size = box.getSize(new THREE.Vector3());
             const maxDim = Math.max(size.x, size.y, size.z);
-            const scale = 2 / maxDim;
+            const scale = 2.4 / maxDim; // Increased slightly from 2
             scene.scale.setScalar(scale);
 
             onLoaded?.();
         }
     }, [scene, onLoaded]);
-
-    // Set initial position based on viewport
-    useEffect(() => {
-        if (groupRef.current) {
-            groupRef.current.position.x = isDesktop ? 0 : 2.6;
-        }
-    }, [isDesktop]);
 
     return (
         <group ref={groupRef}>

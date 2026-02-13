@@ -75,7 +75,7 @@ export default function Services() {
                         trigger: cardsRef.current,
                         start: 'top 80%',
                         end: 'top 20%',
-                        toggleActions: 'play reverse play reverse',
+                        toggleActions: 'play none none none',
                     },
                 });
             }
@@ -99,7 +99,7 @@ export default function Services() {
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     className="text-center mb-16 align-center flex flex-col items-center"
                 >
                     <motion.span
@@ -108,7 +108,7 @@ export default function Services() {
                     >
                         <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
                         <span className="text-[var(--accent-primary)] font-display font-medium uppercase tracking-widest text-sm">
-                            What We Do
+                            Lĩnh Vực Hoạt Động
                         </span>
                     </motion.span>
 
@@ -117,11 +117,11 @@ export default function Services() {
                         className="font-display font-bold tracking-tight"
                         style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: 1.1 }}
                     >
-                        Services & <span className="gradient-text">Capabilities</span>
+                        Dịch Vụ & <span className="gradient-text">Năng Lực</span>
                     </motion.h2>
 
                     <motion.p variants={fadeInUp} className="section-subtitle mx-auto mt-6">
-                        We combine technical excellence with creative vision to deliver exceptional digital solutions.
+                        Chúng tôi kết hợp chuyên môn kỹ thuật xuất sắc với tư duy sáng tạo chiến lược để mang đến những giải pháp số vượt trội.
                     </motion.p>
                 </motion.div>
 

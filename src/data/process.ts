@@ -7,22 +7,22 @@ export interface ProcessStep {
 export const processSteps: ProcessStep[] = [
     {
         id: 1,
-        title: "Discover",
-        description: "We dive deep into your vision, goals, and challenges to understand what success looks like."
+        title: "Khám Phá",
+        description: "Chúng tôi tìm hiểu sâu về tầm nhìn, mục tiêu và thách thức của bạn để hiểu rõ định nghĩa thành công."
     },
     {
         id: 2,
-        title: "Strategize",
-        description: "Our team crafts a tailored approach combining creativity with technical excellence."
+        title: "Chiến Lược",
+        description: "Đội ngũ của chúng tôi xây dựng phương pháp tiếp cận riêng biệt kết hợp sự sáng tạo với chuyên môn kỹ thuật."
     },
     {
         id: 3,
-        title: "Create",
-        description: "We bring ideas to life through iterative design and development with regular feedback loops."
+        title: "Sáng Tạo",
+        description: "Chúng tôi hiện thực hóa ý tưởng qua quá trình thiết kế và phát triển lặp lại với các vòng phản hồi thường xuyên."
     },
     {
         id: 4,
-        title: "Launch",
-        description: "Your project goes live with our full support, optimization, and continuous improvement."
+        title: "Triển Khai",
+        description: "Dự án của bạn được ra mắt với sự hỗ trợ toàn diện, tối ưu hóa và cải tiến liên tục từ chúng tôi."
     }
 ];

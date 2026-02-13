@@ -343,25 +343,17 @@ h6 {
 }
 
 /* ===== HERO SPECIFIC ===== */
-
-/* ===== CUSTOM CURSOR UTILS ===== */
-.custom-cursor-none,
-.custom-cursor-none a,
-.custom-cursor-none button,
-.custom-cursor-none input {
-  cursor: none !important;
+.hero-section-wrapper {
+  margin-top: 100px;
+  /* Navbar clearance for mobile */
 }
 
-/* Ensure mobile retains touch validation if needed, though cursor:none usually fine on desktop */
-@media (hover: none) and (pointer: coarse) {
-
-  .custom-cursor-none,
-  .custom-cursor-none a,
-  .custom-cursor-none button,
-  .custom-cursor-none input {
-    cursor: auto !important;
+@media (min-width: 1024px) {
+  .hero-section-wrapper {
+    margin-top: 0;
   }
 }
+
 
 /* ===== MOBILE PERFORMANCE OPTIMIZATION ===== */
 @media (max-width: 768px) {
@@ -405,4 +397,11 @@ h6 {
   .animate-pulse-glow {
     animation: none;
   }
+}
+
+.category-tab {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

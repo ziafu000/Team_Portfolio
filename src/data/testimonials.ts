@@ -11,25 +11,25 @@ export const testimonials: Testimonial[] = [
     {
         id: "testimonial-1",
         name: "Sarah Chen",
-        role: "CEO",
+        role: "Giám Đốc Điều Hành",
         company: "TechVentures",
-        quote: "They transformed our digital presence completely. The 3D experience they created for our product launch exceeded all expectations.",
+        quote: "Họ đã thay đổi hoàn toàn diện mạo số của chúng tôi. Trải nghiệm 3D họ tạo ra cho buổi ra mắt sản phẩm đã vượt xa mọi kỳ vọng.",
         avatar: "/images/avatars/avatar-1.jpg"
     },
     {
         id: "testimonial-2",
         name: "Michael Torres",
-        role: "Creative Director",
+        role: "Giám Đốc Sáng Tạo",
         company: "Luxe Brands",
-        quote: "Working with this team was seamless. They understood our vision immediately and delivered beyond our wildest dreams.",
+        quote: "Làm việc với đội ngũ này thật suôn sẻ. Họ hiểu ngay tầm nhìn của chúng tôi và mang lại kết quả vượt ngoài mong đợi.",
         avatar: "/images/avatars/avatar-2.jpg"
     },
     {
         id: "testimonial-3",
         name: "Emma Watson",
-        role: "Founder",
+        role: "Nhà Sáng Lập",
         company: "InnovateCo",
-        quote: "The ROI from their digital campaign was incredible. Professional, creative, and results-driven.",
+        quote: "ROI từ chiến dịch số của họ thật đáng kinh ngạc. Chuyên nghiệp, sáng tạo và luôn hướng đến hiệu quả.",
         avatar: "/images/avatars/avatar-3.jpg"
     }
 ];

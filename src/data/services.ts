@@ -8,26 +8,26 @@ export interface Service {
 export const services: Service[] = [
     {
         id: "web",
-        title: "Web Development",
-        description: "High-performance websites and web applications with cutting-edge technologies and seamless user experiences.",
+        title: "Phát Triển Website",
+        description: "Phát triển đa dạng website: Landing Page, E-commerce, Web App với công nghệ hiện đại, tối ưu trải nghiệm người dùng và hiệu suất.",
         icon: "🌐"
     },
     {
         id: "3d",
-        title: "3D & Motion",
-        description: "Immersive 3D visualizations, product configurators, and cinematic motion graphics that captivate audiences.",
+        title: "3D & Chuyển Động",
+        description: "Mô phỏng 3D sản phẩm, kiến trúc và sản xuất Motion Graphics chất lượng cao, tạo ra trải nghiệm thị giác sống động và thu hút.",
         icon: "🎮"
     },
     {
         id: "ads",
-        title: "Digital Ads",
-        description: "Data-driven advertising campaigns across all platforms, optimized for maximum ROI and brand impact.",
+        title: "Quảng Cáo Số",
+        description: "Triển khai chiến dịch quảng cáo đa kênh (Facebook, Google, TikTok) dựa trên dữ liệu, tối ưu hóa ngân sách và cam kết hiệu quả chuyển đổi.",
         icon: "📈"
     },
     {
         id: "creative",
-        title: "Creative Design",
-        description: "Brand identity, UI/UX design, and visual systems that communicate your unique story effectively.",
+        title: "Thiết Kế Sáng Tạo",
+        description: "Giải pháp thiết kế sáng tạo đa dạng: Branding, UI/UX, Graphic Design mang đậm dấu ấn thương hiệu và truyền tải thông điệp mạnh mẽ.",
         icon: "✨"
     }
 ];

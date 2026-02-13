@@ -17,19 +17,19 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://team-agency.vercel.app'),
-  title: "TEAM Agency | Creative Digital & 3D Studio",
-  description: "We craft stunning digital experiences through cutting-edge web development, 3D visualization, creative ads, and innovative design solutions.",
-  keywords: ["3D Studio", "Web Development", "Creative Agency", "Digital Design", "Motion Graphics"],
+  title: "TEAM Agency | Studio Sáng Tạo Số & 3D",
+  description: "Chúng tôi kiến tạo những trải nghiệm số tuyệt vời thông qua phát triển web tiên tiến, trực quan hóa 3D, quảng cáo sáng tạo và các giải pháp thiết kế đột phá.",
+  keywords: ["Studio 3D", "Phát Triển Website", "Agency Sáng Tạo", "Thiết Kế Số", "Đồ Họa Chuyển Động"],
   openGraph: {
-    title: "TEAM Agency | Creative Digital & 3D Studio",
-    description: "Crafting stunning digital experiences through web, 3D, and creative solutions.",
+    title: "TEAM Agency | Studio Sáng Tạo Số & 3D",
+    description: "Kiến tạo những trải nghiệm số tuyệt vời thông qua web, 3D và các giải pháp sáng tạo.",
     images: ["/og-image.png"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TEAM Agency | Creative Digital & 3D Studio",
-    description: "Crafting stunning digital experiences through web, 3D, and creative solutions.",
+    title: "TEAM Agency | Studio Sáng Tạo Số & 3D",
+    description: "Kiến tạo những trải nghiệm số tuyệt vời thông qua web, 3D và các giải pháp sáng tạo.",
     images: ["/og-image.png"],
   },
 };

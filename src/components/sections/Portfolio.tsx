@@ -88,7 +88,7 @@ export default function Portfolio() {
                         trigger: cardsRef.current,
                         start: 'top 80%',
                         end: 'top 20%',
-                        toggleActions: 'play reverse play reverse',
+                        toggleActions: 'play none none none',
                     },
                 });
             }
@@ -112,7 +112,7 @@ export default function Portfolio() {
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     className="text-center mb-16 align-center flex flex-col items-center"
                 >
                     <motion.span
@@ -121,7 +121,7 @@ export default function Portfolio() {
                     >
                         <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
                         <span className="text-[var(--accent-primary)] font-display font-medium uppercase tracking-widest text-sm">
-                            Our Work
+                            Dự Án
                         </span>
                     </motion.span>
 
@@ -130,11 +130,11 @@ export default function Portfolio() {
                         className="font-display font-bold tracking-tight"
                         style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: 1.1 }}
                     >
-                        Selected <span className="gradient-text">Projects</span>
+                        Dự Án <span className="gradient-text">Tiêu Biểu</span>
                     </motion.h2>
 
                     <motion.p variants={fadeInUp} className="section-subtitle mx-auto mt-6">
-                        A showcase of our most impactful work across web, 3D, and creative campaigns.
+                        Tuyển tập những dự án ấn tượng nhất của chúng tôi trong lĩnh vực Web, 3D và Chiến dịch sáng tạo.
                     </motion.p>
                 </motion.div>
 
@@ -165,15 +165,16 @@ export default function Portfolio() {
                                     {/* Category Icon with glow */}
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         <span className="text-7xl opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500">
-                                            {item.category === 'Web Development' ? '🌐' :
-                                                item.category === '3D & Motion' ? '🎮' : '✨'}
+                                            {item.category === 'Phát Triển Website' ? '🌐' :
+                                                item.category === '3D & Chuyển Động' ? '🎮' :
+                                                    item.category === 'Quảng Cáo Số' ? '📈' : '✨'}
                                         </span>
                                     </div>
 
                                     {/* View overlay */}
                                     <div className="absolute inset-0 bg-[var(--accent-primary)]/0 group-hover:bg-[var(--accent-primary)]/10 transition-colors duration-300 flex items-center justify-center">
                                         <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white font-medium text-sm uppercase tracking-wider">
-                                            View Project
+                                            Xem Dự Án
                                         </span>
                                     </div>
                                 </div>
@@ -214,7 +215,7 @@ export default function Portfolio() {
                     variants={fadeInUp}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: false }}
+                    viewport={{ once: true }}
                     className="mt-12 text-center"
                 >
                     <motion.span
@@ -222,7 +223,7 @@ export default function Portfolio() {
                         transition={{ duration: 2, repeat: Infinity }}
                         className="text-[var(--text-muted)] text-xs uppercase tracking-[0.2em]"
                     >
-                        Click project to view details
+                        Nhấp vào dự án để xem chi tiết
                     </motion.span>
                 </motion.div>
             </div>

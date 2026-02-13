@@ -7,10 +7,6 @@ import Preloader from '@/components/ui/Preloader';
 
 // Dynamic imports for client-only components that are optional/heavy
 // These load after the main content is interactive
-const CustomCursor = dynamic(() => import('@/components/ui/CustomCursor'), {
-    ssr: false,
-});
-
 const NoiseOverlay = dynamic(() => import('@/components/ui/NoiseOverlay'), {
     ssr: false,
 });
@@ -41,7 +37,6 @@ export default function ClientProviders({ children }: ClientProvidersProps) {
             {isIdle && (
                 <>
                     <NoiseOverlay />
-                    <CustomCursor />
                 </>
             )}
             {children}
